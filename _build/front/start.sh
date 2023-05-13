@@ -4,6 +4,9 @@ if [ "$BUILD_TYPE" = "Setup" ];
 then
 	NG_CLI_ANALYTICS=false ng new project --skip-git --interactive=false --package-manager=yarn --routing=true --style=css # --verbose=true --strict=true
 	yarn install
+	yarn add @fortawesome/fontawesome-svg-core
+	yarn add @fortawesome/free-solid-svg-icons
+	yarn add @fortawesome/angular-fontawesome@0.13.0
 fi
 
 

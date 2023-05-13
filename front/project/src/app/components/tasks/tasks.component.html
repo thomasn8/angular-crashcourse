@@ -1,0 +1,4 @@
+<!-- loop through each task get in the component and feed them into a task-item component -->
+<app-task-item *ngFor="let task of tasks" [task]="task">
+	{{ task.text }}
+</app-task-item>

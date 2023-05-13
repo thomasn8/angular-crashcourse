@@ -1,0 +1,7 @@
+<div class="task">
+	<h3>
+		{{ task !== undefined && task.text }} 
+		<fa-icon [ngStyle]="{'color': 'red'}" [icon]="faTimes"></fa-icon>
+	</h3>
+	<p>{{ task !== undefined && task.day }}</p>
+</div>
