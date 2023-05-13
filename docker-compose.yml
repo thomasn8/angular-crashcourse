@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    build: ./_build/nginx
+    depends_on:
+      - front
+      - back
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ./_build/nginx/certs:/certs
+    networks:
+      - app_network
+
+  front:
+    build: ./_build/front
+    volumes:
+      - ./front:/app
+    networks:
+      - app_network
+    working_dir: /app
+
+  back:
+    build: 
+      args:
+        user: laravel
+        uid: 1000
+      context: ./_build/back
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./back:/var/www
+    networks:
+      - app_network
+    env_file:
+      - .env
+    working_dir: /var/www  
+
+  db:
+    image: mariadb
+    volumes:
+      - vol_db:/var/lib/mysql/
+    networks:
+      - app_network
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
+      # MARIADB_ROOT_HOST: ${DB_ROOT_HOST}
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+
+
+networks:
+  app_network:
+
+
+volumes:
+  vol_db:

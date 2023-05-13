@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    restart: "no"
+
+  front:
+    restart: "no"
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+
+  back:
+    restart: "no"
+    stdin_open: true
+    tty: true
+    ports:
+      - "9000:9000"
+
+  db:
+    restart: "no"
+    # ports:
+    #  - "3306:3306"
+
+  adminer:
+    image: adminer
+    depends_on:
+      - db
+    restart: "no"
+    ports:
+      - "8081:8080"
+    networks:
+      - app_network
