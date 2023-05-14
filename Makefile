@@ -46,6 +46,8 @@ flogsback:
 			${DOCKER} logs -f back
 flogsnginx:
 			${DOCKER} logs -f nginx
+flogsmock:
+			${DOCKER} logs -f mock-api
 
 
 refront:
@@ -54,6 +56,8 @@ reback:
 			${DOCKER} restart back
 renginx:
 			${DOCKER} restart nginx
+remock:
+			${DOCKER} restart mock-api
 
 
 runfront:
@@ -62,6 +66,8 @@ runback:
 			${DOCKER} exec back sh
 runnginx:
 			${DOCKER} exec nginx bash
+runmock:
+			${DOCKER} exec mock-api sh
 
 # mysql --user=... --password=... databasename
 runmariadb:

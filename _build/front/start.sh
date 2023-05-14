@@ -1,4 +1,3 @@
-yarn global add @angular/cli
 
 if [ "$BUILD_TYPE" = "Setup" ];
 then

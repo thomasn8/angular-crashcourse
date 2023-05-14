@@ -33,3 +33,12 @@ services:
       - "8081:8080"
     networks:
       - app_network
+
+  mock-api:
+    build: ./_build/mock-api
+    ports:
+      - "5000:5000"
+    networks:
+      - app_network
+    volumes:
+      - ./_mock-api:/opt
