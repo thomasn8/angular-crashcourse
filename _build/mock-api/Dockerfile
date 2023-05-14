@@ -1,6 +1,6 @@
 FROM node:alpine
 EXPOSE 5000
-RUN yarn global add json-server cors
+RUN yarn global add json-server
 WORKDIR /opt
 CMD ["json-server", "/opt/db.json", "--host", "mock-api", "--port", "5000"]
 # json-server /opt/db.json --host mock-api --port 5000
